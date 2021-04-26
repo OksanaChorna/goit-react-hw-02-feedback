@@ -2,6 +2,7 @@ import { Component } from 'react';
 import Statistics from '../Statistics';
 import FeedbackOptions from '../FeedbackOptions';
 import style from './feedback.module.css';
+import Section from '../Section';
 
 class Feedback extends Component {
   state = {
@@ -50,20 +51,22 @@ class Feedback extends Component {
   render() {
     return (
       <div className={style.feedbackCard}>
-        <h1 className={style.feedbackTitle}>Please leave feedback!</h1>
+        <Section title="Please leave feedback!">
+          <FeedbackOptions
+            options={this.state}
+            onLeaveFeedback={this.handleClick}
+          />
+        </Section>
 
-        <FeedbackOptions
-          options={this.state}
-          onLeaveFeedback={this.handleClick}
-        />
-
-        <Statistics
-          good={this.state.good}
-          neutral={this.state.neutral}
-          bad={this.state.bad}
-          total={this.countTotalFeedback}
-          positivePercentage={this.countPositiveFeedbackPercentage}
-        />
+        <Section title="Statistics">
+          <Statistics
+            good={this.state.good}
+            neutral={this.state.neutral}
+            bad={this.state.bad}
+            total={this.countTotalFeedback}
+            positivePercentage={this.countPositiveFeedbackPercentage}
+          />
+        </Section>
       </div>
     );
   }
