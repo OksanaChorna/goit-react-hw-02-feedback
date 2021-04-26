@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import Statistics from '../Statistics';
+import FeedbackOptions from '../FeedbackOptions';
 import style from './feedback.module.css';
 
 class Feedback extends Component {
@@ -51,15 +52,10 @@ class Feedback extends Component {
       <div className={style.feedbackCard}>
         <h1 className={style.feedbackTitle}>Please leave feedback!</h1>
 
-        <div className={style.feedbackList}>
-          {Object.keys(this.state).map(key => {
-            return (
-              <button key={key} type="button" onClick={this.handleClick}>
-                {key}
-              </button>
-            );
-          })}
-        </div>
+        <FeedbackOptions
+          options={this.state}
+          onLeaveFeedback={this.handleClick}
+        />
 
         <Statistics
           good={this.state.good}
