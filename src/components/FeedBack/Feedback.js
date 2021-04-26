@@ -9,7 +9,6 @@ class Feedback extends Component {
   };
 
   handleClick = event => {
-    console.log(event.target.innerText);
     if (event.target.innerText === 'good') {
       this.setState(prevState => {
         return {
@@ -35,6 +34,17 @@ class Feedback extends Component {
     }
   };
 
+  countTotalFeedback = () => {
+    return this.state.good + this.state.neutral + this.state.bad;
+  };
+
+  countPositiveFeedbackPercentage = () => {
+    if (this.countTotalFeedback() !== 0) {
+      return Math.round((this.state.good / this.countTotalFeedback()) * 100);
+    }
+    return 0;
+  };
+
   render() {
     return (
       <div className={style.feedbackCard}>
@@ -56,6 +66,10 @@ class Feedback extends Component {
             <li>Good: {this.state.good}</li>
             <li>Neutral: {this.state.neutral}</li>
             <li>Bad: {this.state.bad}</li>
+            <li>Total: {this.countTotalFeedback()}</li>
+            <li>
+              Positive feedback: {this.countPositiveFeedbackPercentage()}%
+            </li>
           </ul>
         </div>
       </div>
