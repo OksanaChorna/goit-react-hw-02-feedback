@@ -1,0 +1,13 @@
+.feedbackCard {
+  background-color: aquamarine;
+}
+.feedbackTitle {
+  background-color: azure;
+}
+.feedbackList {
+  list-style: none;
+  background-color: bisque;
+}
+.feedbackItem {
+  background-color: burlywood;
+}
