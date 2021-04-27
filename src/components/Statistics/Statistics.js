@@ -1,4 +1,4 @@
-import styles from './statistics.module.css';
+import styles from './Statistics.module.css';
 import Notification from '../Notification';
 import PropsType from 'prop-types';
 
