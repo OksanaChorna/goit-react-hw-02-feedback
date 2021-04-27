@@ -1,17 +1,20 @@
 import { Component } from 'react';
 import Statistics from '../Statistics';
 import FeedbackOptions from '../FeedbackOptions';
-import style from './feedback.module.css';
 import Section from '../Section';
+import { clearConfigCache } from 'prettier';
 
 class Feedback extends Component {
+  
   state = {
     good: 0,
     neutral: 0,
     bad: 0,
   };
+  
 
   handleClick = event => {
+
     if (event.target.innerText === 'good') {
       this.setState(prevState => {
         return {
@@ -36,7 +39,7 @@ class Feedback extends Component {
       });
     }
   };
-
+  
   countTotalFeedback = () => {
     return this.state.good + this.state.neutral + this.state.bad;
   };
@@ -49,20 +52,22 @@ class Feedback extends Component {
   };
 
   render() {
+    const { good, neutral, bad } = this.state
+    
     return (
-      <div className={style.feedbackCard}>
+      <div>
         <Section title="Please leave feedback!">
           <FeedbackOptions
-            options={this.state}
+            options={Object.keys(this.state)}
             onLeaveFeedback={this.handleClick}
           />
         </Section>
 
         <Section title="Statistics">
           <Statistics
-            good={this.state.good}
-            neutral={this.state.neutral}
-            bad={this.state.bad}
+            good={good}
+            neutral={neutral}
+            bad={bad}
             total={this.countTotalFeedback}
             positivePercentage={this.countPositiveFeedbackPercentage}
           />
