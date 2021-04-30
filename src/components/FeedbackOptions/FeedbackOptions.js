@@ -6,7 +6,7 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
     <div className={style.feedbackList}>
       {options.map(key => {
         return (
-          <button key={key} type="button" onClick={onLeaveFeedback}>
+          <button key={key} type="button" name={key} onClick={onLeaveFeedback}>
             {key}
           </button>
         );
@@ -17,7 +17,7 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
 
 FeedbackOptions.PropsType = {
   options: PropsType.arrayOf(PropsType.string).isRequired,
-  onLeaveFeedback: PropsType.func.isRequired
-}
+  onLeaveFeedback: PropsType.func.isRequired,
+};
 
 export default FeedbackOptions;
